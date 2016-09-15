@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/FCO/Heap.svg?branch=master)](https://travis-ci.org/FCO/Heap)
 
-* Heap
+# Heap
 
 A simple perl6 module implementing the heap data structure.
 
