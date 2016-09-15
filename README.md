@@ -11,6 +11,8 @@ say $heap.pop;		# 1
 say $heap.pop;		# 3
 say $heap.pop;		# 5
 
+say $heap.all		# (7, 8, 9)
+
 ```
 
 ```perl6
