@@ -6,7 +6,7 @@ A simple perl6 module implementing the heap data structure.
 
 ```perl6
 my Heap $heap .= new: 9 7 5 3 1;
-$heap.add: 8;
+$heap.push: 8;
 say $heap.pop;		# 1
 say $heap.pop;		# 3
 say $heap.pop;		# 5
@@ -17,7 +17,7 @@ say $heap.all		# (7, 8, 9)
 
 ```perl6
 my Heap[-*] $heap .= new: 9 7 5 3 1;
-$heap.add: 8;
+$heap.push: 8;
 say $heap.pop;		# 9
 say $heap.pop;		# 8
 say $heap.pop;		# 7
@@ -26,7 +26,7 @@ say $heap.pop;		# 7
 
 ```perl6
 my Heap[{$^b <=> $^a}] $heap .= new: 9 7 5 3 1;
-$heap.add: 8;
+$heap.push: 8;
 say $heap.pop;		# 9
 say $heap.pop;		# 8
 say $heap.pop;		# 7
@@ -40,7 +40,7 @@ my Heap[*<order>] $heap .= new:
 	{:something<bli>, :order<3>},
 	{:something<blu>, :order<5>},
 ;
-$heap.add: {:something<blo>, :order<4>},
+$heap.push: {:something<blo>, :order<4>},
 say $heap.pop;		# {:something<bla>, :order<1>}
 say $heap.pop;		# {:something<ble>, :order<2>}
 say $heap.pop;		# {:something<bli>, :order<3>}

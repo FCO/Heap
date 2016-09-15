@@ -1,9 +1,12 @@
+#| Impleementation of Heap data structure
 role Heap[$heap_cmp = * cmp *] {
+	#| The comparator function
 	has &.cmp = do given $heap_cmp {
 		when Callable	{$_					}
 		when Whatever	{ -> $val {$val}	}
 		default			{ -> | {$heap_cmp}	}
 	};
+	#| The array with the heap data
 	has Any @!data;
 
 	method !cmp($a, $b) {
@@ -14,6 +17,7 @@ role Heap[$heap_cmp = * cmp *] {
 		}
 	}
 
+	#| Receives a array and transforms that array in a Heap (O(n))
 	method new(+@arr) {
 		my $obj = self.bless;
 		$obj!build(@arr);
@@ -81,11 +85,13 @@ role Heap[$heap_cmp = * cmp *] {
 		?@!data
 	}
 
-	method add($new) {
+	#| Add a ney value on the Heap
+	method push($new) {
 		@!data.push: $new;
 		self!up: @!data.elems - 1
 	}
 
+	#| Removes and returns the first element of the heap
 	method pop {
 		return Any unless @!data;
 		my \ret = @!data.shift;
@@ -96,6 +102,7 @@ role Heap[$heap_cmp = * cmp *] {
 		ret
 	}
 
+	#| Pops the Heap until its empty
 	method all {
 		gather take $.pop while self
 	}

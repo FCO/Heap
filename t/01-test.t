@@ -14,7 +14,7 @@ ok $h2.defined, "Heap defined with list os pars";
 ok	$h1 eqv $h2, "Compare heaps";
 ok	$h1 !eqv my $h3 = Heap.new: 2, 3;
 
-$h3.add: 1;
+$h3.push: 1;
 ok	$h1 eqv $h3;
 
 my $m1 = Heap[-*].new(<1 2 3>);
