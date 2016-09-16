@@ -4,7 +4,7 @@ role Heap[$heap_cmp = * cmp *] {
 	has &.cmp = do given $heap_cmp {
 		when Callable	{$_					}
 		when Whatever	{ -> $val {$val}	}
-		default			{ -> | {$heap_cmp}	}
+		default			{ -> $ {$heap_cmp}	}
 	};
 	#| The array with the heap data
 	has Any @!data;
@@ -85,6 +85,14 @@ role Heap[$heap_cmp = * cmp *] {
 		?@!data
 	}
 
+	multi method ACCEPTS(@other) {
+		self.Array.sort(&!cmp) ~~ @other
+	}
+
+	multi method ACCEPTS($other where *.can("Array")) {
+		self.Array.sort(&!cmp) ~~ $other.Array.sort(&!cmp)
+	}
+
 	#| Add a ney value on the Heap
 	method push($new) {
 		@!data.push: $new;
@@ -106,6 +114,6 @@ role Heap[$heap_cmp = * cmp *] {
 	method all {
 		gather take $.pop while self
 	}
+
 }
-multi infix:<eqv>(Heap $l, Heap $r) is export {$l.Array.sort($l.cmp) == $r.Array.sort($r.cmp) }
 

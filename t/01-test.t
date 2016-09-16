@@ -11,15 +11,17 @@ my $h2 = Heap.new(3, 2, 1);
 ok $h1.defined, "Heap defined with array";
 ok $h2.defined, "Heap defined with list os pars";
 
-ok	$h1 eqv $h2, "Compare heaps";
-ok	$h1 !eqv my $h3 = Heap.new: 2, 3;
+ok	$h1 ~~ $h2, "Compare heaps";
+my $h3 = Heap.new(2, 3);
+note "h1({$h1.Array}), h3({$h3.Array})";
+ok	$h1 !~~ $h3, "compare non equal heaps";
 
 $h3.push: 1;
-ok	$h1 eqv $h3;
+ok	$h1 ~~ $h3, "Compare heaps 2";
 
 my $m1 = Heap[-*].new(<1 2 3>);
 my $m2 = Heap[-*].new(3, 2, 1);
-ok	$m1 eqv $m2;
+ok	$m1 ~~ $m2, "Compare heaps 3";
 
 my $p1 = Heap.new: <1 2 3 4 a b e c e f 5 4 3 2 1 -1 -2 0>;
 is	$p1.pop, -2;
