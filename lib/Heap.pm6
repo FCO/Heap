@@ -46,7 +46,7 @@ role Heap[$heap_cmp = * cmp *] {
 		}
 	}
 
-	method !down(UInt \i where 0 ≤ * < @!data) {
+	method !down(UInt \i where * < @!data) {
 		my \left	= self!get-left:	i;
 		my \right	= self!get-right:	i;
 
@@ -100,7 +100,7 @@ role Heap[$heap_cmp = * cmp *] {
 	#| Add a ney value on the Heap
 	method push($new) {
 		@!data.push: $new;
-		self!up: @!data.elems - 1
+		self!up: @!data.elems - 1 if @!data.elems > 1
 	}
 
 	#| Removes and returns the first element of the heap

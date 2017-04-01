@@ -5,9 +5,24 @@ use-ok "Heap";
 
 use Heap;
 
+my $h;
 lives-ok {
-	Heap.new
+	$h = Heap.new
 }, "Empty Heap";
+
+is-deeply $h.Set, [].Set;
+
+lives-ok {
+	$h.push: 1
+}, "Push into empty Heap";
+
+is-deeply $h.Set, [1].Set;
+
+lives-ok {
+	$h.push: -1
+}, "Push into empty Heap";
+
+is-deeply $h.Set, [-1, 1].Set;
 
 my $h1 = Heap.new(1, 2, 3);
 my $h2 = Heap.new(3, 2, 1);
