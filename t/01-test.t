@@ -5,6 +5,10 @@ use-ok "Heap";
 
 use Heap;
 
+lives-ok {
+	Heap.new
+}, "Empty Heap";
+
 my $h1 = Heap.new(1, 2, 3);
 my $h2 = Heap.new(3, 2, 1);
 

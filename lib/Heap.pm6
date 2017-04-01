@@ -25,20 +25,20 @@ role Heap[$heap_cmp = * cmp *] {
 	}
 
 	method rebuild(@!data) {
-		for self!get-parent(+@!data) ... 0 -> Int \i {
+		for reverse 0 .. self!get-parent(+@!data) -> UInt \i {
 			self!down(i);
 		}
 	}
 
-	method !get-parent(Int \node)    {  (node - 1) div 2 }
-	method !get-left(Int \node)      {  (node * 2) + 1 }
-	method !get-right(Int \node)     {  (node * 2) + 2 }
+	method !get-parent(UInt \node)    {  (node - 1) div 2 }
+	method !get-left(UInt \node)      {  (node * 2) + 1 }
+	method !get-right(UInt \node)     {  (node * 2) + 2 }
 
-	method !swap(Int \i, Int \j) {
+	method !swap(UInt \i, UInt \j) {
 		@!data[i, j] = @!data[j, i]
 	}
 
-	method !up(Int \i where 0 < * < @!data) {
+	method !up(UInt \i where 0 < * < @!data) {
 		my \parent = self!get-parent:	i;
 		if self!cmp(@!data[i], @!data[parent]) < 0 {
 			self!swap:	i, parent;
@@ -46,7 +46,7 @@ role Heap[$heap_cmp = * cmp *] {
 		}
 	}
 
-	method !down(Int \i where -1 < * < @!data) {
+	method !down(UInt \i where 0 ≤ * < @!data) {
 		my \left	= self!get-left:	i;
 		my \right	= self!get-right:	i;
 
