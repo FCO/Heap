@@ -20,11 +20,11 @@ role Heap[$heap_cmp = * cmp *] {
 	#| Receives a array and transforms that array in a Heap (O(n))
 	method new(+@arr) {
 		my $obj = self.bless;
-		$obj!build(@arr);
+		$obj.rebuild(@arr);
 		$obj
 	}
 
-	method !build(@!data) {
+	method rebuild(@!data) {
 		for self!get-parent(+@!data) ... 0 -> Int \i {
 			self!down(i);
 		}
