@@ -69,6 +69,10 @@ role Heap[$heap_cmp = * cmp *] {
 		::?CLASS.^name ~ ".new: {@!data.gist}";
 	}
 
+	method Numeric {
+		+@!data
+	}
+
 	method Array {
 		@!data
 	}
