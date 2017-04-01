@@ -7,7 +7,7 @@ role Heap[$heap_cmp = * cmp *] {
 		default			{ -> $ {$heap_cmp}	}
 	};
 	#| The array with the heap data
-	has Any @!data;
+	has Any @.data;
 
 	method !cmp($a, $b) {
 		do if &!cmp.signature.params.elems == 1 {
@@ -18,13 +18,13 @@ role Heap[$heap_cmp = * cmp *] {
 	}
 
 	#| Receives a array and transforms that array in a Heap (O(n))
-	method new(+@arr) {
-		my $obj = self.bless;
-		$obj.rebuild(@arr);
+	method new(+@arr is copy) {
+		my $obj = self.bless: :data(@arr);
+		$obj.rebuild;
 		$obj
 	}
 
-	method rebuild(@!data) {
+	method rebuild {
 		for reverse 0 .. self!get-parent(+@!data) -> UInt \i {
 			self!down(i);
 		}
