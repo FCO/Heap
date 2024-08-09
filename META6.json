@@ -1,18 +1,30 @@
 {
-    "perl"          : "6.*",
-    "name"          : "Heap",
-    "version"       : "0.0.1",
-    "description"   : "Simple Heap implementation",
-    "authors"       : ["Fernando Correa de Oliveira"],
-    "tags"          : ["heap", "struct", "data"],
-    "provides" : {
-        "Heap" : "lib/Heap.pm6"
-    },
-    "depends"       : [ ],
-    "test-depends"  : [
-        "Test",
-        "Test::META"
-   ],
-    "resources"     : [ ],
-    "source-url"    : "git://github.com/FCO/Heap.git"
+  "auth": "zef:FCO",
+  "authors": [
+    "Fernando Correa de Oliveira"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "Simple Heap implementation",
+  "license": "NOASSERTION",
+  "name": "Heap",
+  "perl": "6.*",
+  "provides": {
+    "Heap": "lib/Heap.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "git://github.com/FCO/Heap.git",
+  "tags": [
+    "heap",
+    "struct",
+    "data"
+  ],
+  "test-depends": [
+    "Test",
+    "Test::META"
+  ],
+  "version": "0.0.1"
 }
